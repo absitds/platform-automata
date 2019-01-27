@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.albertsons.itds</groupId>
-		<artifactId>itds-root</artifactId>
+		<artifactId>platform-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>itds-config</artifactId>
+	<artifactId>platform-config</artifactId>
 	<packaging>pom</packaging>
 	<modules>
 		<module>build</module>
