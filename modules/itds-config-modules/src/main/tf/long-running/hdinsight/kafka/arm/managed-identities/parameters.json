@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_kfka_itds_dev_wus_name": {
+            "value": null
+        },
+        "networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name": {
+            "value": null
+        },
+        "userAssignedIdentities_kfka_itds_dev_wus_me_name": {
+            "value": null
+        },
+        "securityRules_port_any_inbound_name": {
+            "value": null
+        },
+        "securityRules_port_any_outbound_name": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_id": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_subnet": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_id_1": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_subnet_1": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_id_2": {
+            "value": null
+        },
+        "clusters_kfka_itds_dev_wus_subnet_2": {
+            "value": null
+        }
+    }
+}

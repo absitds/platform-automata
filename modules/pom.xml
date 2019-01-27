@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+    	<groupId>com.albertsons.itds</groupId>
+    	<artifactId>itds-config</artifactId>
+    	<version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>modules</artifactId>
+    <packaging>pom</packaging>
+    <dependencies>
+    </dependencies>
+    <modules>
+        <module>itds-config-dev</module>
+        <module>itds-config-prod</module>
+        <module>itds-config-qa</module>
+        <module>itds-config-dops</module>
+        <module>itds-config-modules</module>
+        <module>itds-config-dockers</module>
+    </modules>
+</project>
