@@ -15,7 +15,8 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/backend?ref=master"
+    #source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/backend?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-config/modules/terraform-backend"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -28,9 +29,9 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-tf_sa_name = "itdsdevwustfsa"
+tf_sa_name = "itdsdevwustfsa001"
 
-tf_sa_sc_name = "itds-dev-wus-tf-state"
+tf_sa_sc_name = "itds-dev-wus-tf-state-001"
 
 ################################################################################
 #                                     End                                      #

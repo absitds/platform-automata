@@ -15,7 +15,7 @@ terragrunt = {
   remote_state {
     backend = "azurerm"
     config {
-      storage_account_name  = "itdsdopswustfsa"
+      storage_account_name  = "itdsdopswustfsa001"
       container_name        = "itds-dops-wus-tf-state"
       arm_client_id         = "3d15beb5-6008-4541-b75b-9a2d893d1875"
       arm_subscription_id   = "caa8382f-b56d-4198-acd4-e29f5221ae99"
