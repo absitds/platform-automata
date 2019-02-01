@@ -16,7 +16,7 @@ vnet_address_space = "172.21.36.0/22"
 
 vnet_start_ip = "172.21.36.0"
 
-vnet_end_ip = "172.21.35.255"
+vnet_end_ip = "172.21.39.255"
 
 shsrv_sa = "absitdsqawus001"
 
