@@ -19,7 +19,7 @@ terragrunt = {
       storage_account_name  = "absitdsqaswustfsa"
       container_name        = "itds-qa-wus-tf-state"
       arm_client_id         = "4b812f96-1165-4b7f-bc5d-91de6c86e79b"
-      arm_subscription_id   = "caa8382f-b56d-4198-acd4-e29f5221ae99"
+      arm_subscription_id   = "8dec33cc-66d9-41f1-be7f-8f97adbf1c70"
       arm_client_secret     = "e0hTVYRLSGTracvHY++4Q7psa2NYL57viRUwissnBs4="
       arm_tenant_id         = "b7f604a0-00a9-4188-9248-42f3a5aac2e9"
       key                   = "${path_relative_to_include()}/terraform.tfstate"
