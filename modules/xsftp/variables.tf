@@ -59,7 +59,8 @@ variable "shrd_srv_xsftp_vm_ip" {
 variable "shrd_srv_xsftp_vm" {
   type = "map"
 }
-
 variable "shrd_srv_xsftp_vm_adm"{}
 
 variable "shrd_srv_xsftp_vm_pswd" {}
+
+variable "env_disable_lk" {}

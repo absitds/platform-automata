@@ -17,3 +17,5 @@ variable "shrd_srv_msql" {
 variable "shsrv_srv_msql_adm_usr" {}
 
 variable "shsrv_srv_msql_adm_pswd" {}
+
+variable "env_disable_lk" {}

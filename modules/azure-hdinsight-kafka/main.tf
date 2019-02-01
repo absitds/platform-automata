@@ -19,6 +19,7 @@ resource "azurerm_management_lock" "itds_rg_lk" {
   scope = "${azurerm_resource_group.itds_hdi_kfka_rg.id}"
   lock_level = "CanNotDelete"
   notes = "${azurerm_resource_group.itds_hdi_kfka_rg.name} resource group can not be deleted"
+  count = "${var.env_disable_lk}"
 }
 
 resource "azurerm_network_security_group" "itds_hdi_kfka_nsg" {

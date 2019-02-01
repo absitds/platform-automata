@@ -9,3 +9,5 @@ variable "shsrv_lgx" {}
 variable "shrd_srv_lgx_rtn_dys" {}
 
 variable "shrd_srv_lgx_sku" {}
+
+variable "env_disable_lk" {}

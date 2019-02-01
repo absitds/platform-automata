@@ -11,3 +11,5 @@ variable "vnet_address_space" {}
 variable "tf_snet_address_prefix" {}
 
 variable "tf_sa_name" {}
+
+variable "env_disable_lk" {}

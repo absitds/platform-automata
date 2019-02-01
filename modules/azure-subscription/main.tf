@@ -9,6 +9,7 @@ resource "azurerm_management_lock" "itds_subs_lk" {
   scope      = "${data.azurerm_subscription.current.id}"
   lock_level = "CanNotDelete"
   notes      = "${data.azurerm_subscription.current.display_name} subscription can not be deleted"
+  count = "${var.env_disable_lk}"
 }
 
 #Azure Policy Assignments

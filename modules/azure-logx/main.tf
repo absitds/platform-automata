@@ -9,14 +9,13 @@ resource "azurerm_resource_group" "itds_shrd_srv_lgx_rg" {
   location = "${var.env_location_wus1}"
 }
 
-/*
+
 resource "azurerm_management_lock" "itds_shrd_srv_lgx_lk" {
   name = "${var.env_prefix_hypon}-shrd-srv-lgx-rg-lk"
   scope = "${azurerm_resource_group.itds_shrd_srv_lgx_rg.id}"
   lock_level = "CanNotDelete"
-  notes = "${azurerm_resource_group.itds_shrd_srv_lgx_rg.name} resource group can not be deleted"
+  count = "${var.env_disable_lk}"
 }
-*/
 
 resource "azurerm_log_analytics_workspace" "itds_shrd_srv_lgx_wksp" {
   name                = "${var.env_prefix_hypon}-shrd-srv-lgx-wksp"

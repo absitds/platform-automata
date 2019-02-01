@@ -52,5 +52,7 @@ shrd_srv_jnkns_snet_addr_pfx = "172.21.40.64/27"
 
 shsrv_acr = "absitdsdopsacr001"
 
+#if value is zero then no lock is created
+env_disable_lk = 0
 
 

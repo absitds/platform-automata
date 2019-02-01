@@ -65,3 +65,5 @@ variable "shrd_srv_jnkns_vm_adm"{}
 variable "shrd_srv_jnkns_vm_pswd" {}
 
 variable "shrd_srv_jnkns_ghub_url" {}
+
+variable "env_disable_lk" {}

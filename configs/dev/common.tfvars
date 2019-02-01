@@ -57,6 +57,8 @@ shsrv_lgx = "absitdsdevwuslgx001"
 
 tenant_id = "b7f604a0-00a9-4188-9248-42f3a5aac2e9"
 
+#if value is zero then no lock is created
+env_disable_lk = 0
 
 
 

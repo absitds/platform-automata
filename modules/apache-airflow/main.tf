@@ -14,6 +14,7 @@ resource "azurerm_management_lock" "itds_rg_lk" {
   scope = "${azurerm_resource_group.itds_shrd_srv_arflw_rg.id}"
   lock_level = "CanNotDelete"
   notes = "${azurerm_resource_group.itds_shrd_srv_arflw_rg.name} resource group can not be deleted"
+  count = "${var.env_disable_lk}"
 }
 
 

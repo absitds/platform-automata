@@ -13,3 +13,5 @@ variable "vnet_end_ip" {}
 variable "shrd_srv_rdis" {
   type = "map"
 }
+
+variable "env_disable_lk" {}

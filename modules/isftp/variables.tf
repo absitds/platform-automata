@@ -63,3 +63,5 @@ variable "shrd_srv_isftp_vm" {
 variable "shrd_srv_isftp_vm_adm"{}
 
 variable "shrd_srv_isftp_vm_pswd" {}
+
+variable "env_disable_lk" {}

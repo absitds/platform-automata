@@ -9,3 +9,5 @@ variable "shsrv_vlt" {}
 variable "tenant_id" {}
 
 variable "vnet_address_space" {}
+
+variable "env_disable_lk" {}

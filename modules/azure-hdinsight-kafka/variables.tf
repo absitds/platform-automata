@@ -43,3 +43,5 @@ variable hdi_kfka_wrk_nd_dsks_cnt {}
 variable hdi_kfka_wrk_nd_sz {}
 
 variable hdi_kfka_zk_nd_sz {}
+
+variable "env_disable_lk" {}

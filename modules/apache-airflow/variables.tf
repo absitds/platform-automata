@@ -63,3 +63,5 @@ variable "shrd_srv_arflw_vm" {
 variable "shrd_srv_arflw_vm_adm"{}
 
 variable "shrd_srv_arflw_vm_pswd" {}
+
+variable "env_disable_lk" {}

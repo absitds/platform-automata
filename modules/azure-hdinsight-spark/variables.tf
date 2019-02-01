@@ -43,3 +43,5 @@ variable hdi_sprk_wrk_nd_dsks_cnt {}
 variable hdi_sprk_wrk_nd_sz {}
 
 variable hdi_sprk_zk_nd_sz {}
+
+variable "env_disable_lk" {}
