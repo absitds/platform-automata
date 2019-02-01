@@ -30,6 +30,8 @@ terragrunt = {
 
 shrd_srv_hue_vm_adm = "itdsdopswusadmin"
 
+shrd_srv_hue_ghub_url = "https://github.com/absitds/platform-hue.git"
+
 shrd_srv_hue_nsg_ibnd_rl = [
   "22",
   "8888"

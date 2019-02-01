@@ -21,6 +21,11 @@ resource "azurerm_management_lock" "itds_rg_lk" {
   notes = "${azurerm_resource_group.itds_hdi_sprk_rg.name} resource group can not be deleted"
 }
 
+resource "azurerm_user_assigned_identity" "itds_hdi_sprk_mi" {
+  resource_group_name = "${azurerm_resource_group.itds_hdi_sprk_rg.name}"
+  location            = "${azurerm_resource_group.itds_hdi_sprk_rg.location}"
+  name = "${var.env_prefix_hypon}-hdi-sprk-mi"
+}
 
 resource "azurerm_network_security_group" "itds_hdi_sprk_nsg" {
   name = "${var.env_prefix_hypon}-hdi-sprk-nsg"
@@ -66,9 +71,9 @@ resource "azurerm_subnet_network_security_group_association" "itds_hdi_sprk_snet
 }
 
 
-az group deployment create -g ${azurerm_resource_group.itds_shrd_rg.name} --template-file arm/managed-identities/template.json --parameters @params.json --parameters MyValue=This MyArray=@array.json
+#az group deployment create -g ${azurerm_resource_group.itds_shrd_rg.name} --template-file arm/managed-identities/template.json --parameters @params.json --parameters MyValue=This MyArray=@array.json
 
-az extension add --name storage-preview && az storage account create --name ${var.shsrv_sa} --resource-group ${azurerm_resource_group.itds_shrd_rg.name} --kind StorageV2 --hierarchical-namespace --https-only true --assign-identity --sku Standard_LRS
+#az extension add --name storage-preview && az storage account create --name ${var.shsrv_sa} --resource-group ${azurerm_resource_group.itds_shrd_rg.name} --kind StorageV2 --hierarchical-namespace --https-only true --assign-identity --sku Standard_LRS
 resource "null_resource" "itds_hdi_sprk" {
   provisioner "local-exec" {
     command = ""
@@ -77,5 +82,10 @@ resource "null_resource" "itds_hdi_sprk" {
     "azurerm_resource_group.itds_shrd_rg"
   ]
 }
+
+data "azurerm_builtin_role_definition" "contributor" {
+  name = "Contributor"
+}
+
 
 #HDInsight clusters in the same Virtual Network requires each cluster to have unique first six characters

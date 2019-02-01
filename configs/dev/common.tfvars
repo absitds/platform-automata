@@ -49,13 +49,11 @@ hdi_sprk_snet_addr_pfx = "172.21.32.192/26"
 shrd_srv_artif_snet_addr_pfx = "172.21.32.128/27"
 
 
+shsrv_acr = "absitdsdevwusacr001"
 
+shsrv_vlt = "absitdsdevwusvlt001"
 
-shsrv_acr = "absitdsdevacr001"
-
-shsrv_vlt = "absitdsdevvlt001"
-
-shsrv_lgx = "absitdsdevlgx001"
+shsrv_lgx = "absitdsdevwuslgx001"
 
 tenant_id = "b7f604a0-00a9-4188-9248-42f3a5aac2e9"
 

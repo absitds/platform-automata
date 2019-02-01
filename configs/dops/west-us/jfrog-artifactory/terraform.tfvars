@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/long-running/cicd-services/artifactory?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/jfrog-artifactory"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -29,6 +29,8 @@ terragrunt = {
 ################################################################################
 
 shrd_srv_artif_vm_adm = "itdsdopswusadmin"
+
+shrd_srv_artif_ghub_url = "https://github.com/absitds/platform-artifactory.git"
 
 shrd_srv_artif_vm_pswd = "ztrdsed_vwE_53_243"
 

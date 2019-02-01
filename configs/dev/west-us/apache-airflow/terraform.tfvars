@@ -30,6 +30,8 @@ terragrunt = {
 
 shrd_srv_arflw_vm_adm = "itdsdopswusadmin"
 
+shrd_srv_arflw_ghub_url = "https://github.com/absitds/platform-airflow.git"
+
 shrd_srv_arflw_nsg_ibnd_rl = [
   "22",
   "8080"
