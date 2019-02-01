@@ -61,7 +61,7 @@ shrd_srv_isftp_lb_fnt_prt = [
 ]
 
 shrd_srv_isftp_lb_prb_prt = [
-  "22"
+  "22",
   "2222"
 ]
 
