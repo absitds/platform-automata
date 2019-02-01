@@ -75,7 +75,7 @@ shrd_srv_jnkns_lb_bck_prt = [
 ]
 
 shrd_srv_jnkns_vm_ip = [
-  "172.21.40.36"
+  "172.21.40.68"
 ]
 
 shrd_srv_jnkns_vm = {

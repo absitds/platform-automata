@@ -32,8 +32,6 @@ shrd_srv_artif_vm_adm = "itdsdopswusadmin"
 
 shrd_srv_artif_ghub_url = "https://github.com/absitds/platform-artifactory.git"
 
-shrd_srv_artif_vm_pswd = "ztrdsed_vwE_53_243"
-
 shrd_srv_artif_nsg_ibnd_rl = [
   "22",
   "8081"
@@ -74,7 +72,7 @@ shrd_srv_artif_lb_bck_prt = [
 ]
 
 shrd_srv_artif_vm_ip = [
-  "172.21.40.20"
+  "172.21.40.36"
 ]
 
 shrd_srv_artif_vm = {
