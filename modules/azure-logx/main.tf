@@ -6,7 +6,7 @@ data "azurerm_subscription" "current" {}
 
 resource "azurerm_resource_group" "itds_shrd_srv_lgx_rg" {
   name = "${var.env_prefix_hypon}-shrd-srv-lgx-rg"
-  location = "${var.env_location_wus1}"
+  location = "${var.env_location_wus2}"
 }
 
 

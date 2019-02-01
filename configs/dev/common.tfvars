@@ -2,7 +2,7 @@ env_name = "Dev"
 
 env_location = "West US"
 
-env_location_wus1 = "West US2"
+env_location_wus2 = "West US2"
 
 env_group = "ITDS"
 
