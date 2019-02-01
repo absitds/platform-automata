@@ -22,6 +22,12 @@ resource "azurerm_management_lock" "itds_rg_lk" {
   count = "${var.env_disable_lk}"
 }
 
+resource "azurerm_user_assigned_identity" "itds_hdi_kfka_mid" {
+  resource_group_name = "${azurerm_resource_group.itds_hdi_kfka_rg.name}"
+  location            = "${azurerm_resource_group.itds_hdi_kfka_rg.location}"
+  name = "${var.env_prefix_hypon}-hdi-kfka-mid"
+}
+
 resource "azurerm_network_security_group" "itds_hdi_kfka_nsg" {
   name = "${var.env_prefix_hypon}-hdi-kfka-nsg"
   resource_group_name = "${azurerm_resource_group.itds_hdi_kfka_rg.name}"

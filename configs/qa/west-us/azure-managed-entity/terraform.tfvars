@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/azure-storage"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/azure-managed-entity"
   }
 
   # Include all settings from the root terraform.tfvars file
