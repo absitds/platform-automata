@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/long-running/shared-services/sftp/internal?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/isftp"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -32,15 +32,18 @@ shrd_srv_isftp_vm_adm = "itdsdopswusadmin"
 
 
 shrd_srv_isftp_nsg_ibnd_rl = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_nsg_ibnd_rl_src_pfx = [
   "*",
+  "*"
 ]
 
 shrd_srv_isftp_nsg_ibnd_rl_dst_pfx = [
   "*",
+  "*"
 ]
 
 shrd_srv_isftp_nsg_obnd_rl = [
@@ -53,14 +56,17 @@ shrd_srv_isftp_nsg_obnd_rl_dst_pfx = [
 ]
 
 shrd_srv_isftp_lb_fnt_prt = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_lb_prb_prt = [
+  "22"
   "2222"
 ]
 
 shrd_srv_isftp_lb_bck_prt = [
+  "22",
   "2222"
 ]
 
