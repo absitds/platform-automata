@@ -3,16 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="build" target="1.8" />
-      <module name="itds-config" target="1.8" />
-      <module name="itds-config-dev" target="1.8" />
-      <module name="itds-config-dockers" target="1.8" />
-      <module name="itds-config-dockers (1)" target="1.8" />
-      <module name="itds-config-dops" target="1.8" />
-      <module name="itds-config-modules" target="1.8" />
-      <module name="itds-config-prod" target="1.8" />
-      <module name="itds-config-qa" target="1.8" />
-      <module name="itds-docker-xsftp" target="1.8" />
-      <module name="modules" target="1.8" />
+      <module name="modules" target="1.5" />
+      <module name="platform-config" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

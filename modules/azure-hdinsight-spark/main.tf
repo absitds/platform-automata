@@ -72,21 +72,11 @@ resource "azurerm_subnet_network_security_group_association" "itds_hdi_sprk_snet
 }
 
 
-#az group deployment create -g ${azurerm_resource_group.itds_shrd_rg.name} --template-file arm/managed-identities/template.json --parameters @params.json --parameters MyValue=This MyArray=@array.json
-
-#az extension add --name storage-preview && az storage account create --name ${var.shsrv_sa} --resource-group ${azurerm_resource_group.itds_shrd_rg.name} --kind StorageV2 --hierarchical-namespace --https-only true --assign-identity --sku Standard_LRS
 resource "null_resource" "itds_hdi_sprk" {
   provisioner "local-exec" {
-    command = ""
+    command = "az account set --subscription ${data.azurerm_subscription.current.id} && az group deployment create --name "$deploymentName" --resource-group ${azurerm_resource_group.itds_hdi_sprk_rg} --template-file "$templateFilePath" --parameters "@${parametersFilePath}""
   }
   depends_on = [
     "azurerm_resource_group.itds_shrd_rg"
   ]
 }
-
-data "azurerm_builtin_role_definition" "contributor" {
-  name = "Contributor"
-}
-
-
-#HDInsight clusters in the same Virtual Network requires each cluster to have unique first six characters
