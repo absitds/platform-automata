@@ -31,17 +31,14 @@ terragrunt = {
 shrd_srv_xsftp_vm_adm = "itdsdopswusadmin"
 
 shrd_srv_xsftp_nsg_ibnd_rl = [
-  "22",
-  "8080"
+  "2222"
 ]
 
 shrd_srv_xsftp_nsg_ibnd_rl_src_pfx = [
-  "*",
   "*"
 ]
 
 shrd_srv_xsftp_nsg_ibnd_rl_dst_pfx = [
-  "*",
   "*"
 ]
 
@@ -55,18 +52,15 @@ shrd_srv_xsftp_nsg_obnd_rl_dst_pfx = [
 ]
 
 shrd_srv_xsftp_lb_fnt_prt = [
-  "22",
-  "8080"
+  "2222"
 ]
 
 shrd_srv_xsftp_lb_prb_prt = [
-  "22",
-  "8080"
+  "2222"
 ]
 
 shrd_srv_xsftp_lb_bck_prt = [
-  "22",
-  "8080"
+  "2222"
 ]
 
 shrd_srv_xsftp_vm_ip = [

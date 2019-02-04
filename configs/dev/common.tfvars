@@ -28,10 +28,6 @@ env_prefix_alph_num = "ItdsDevWus"
 
 tf_snet_address_prefix = "172.21.32.0/29"
 
-prob_snet_addr_pfx = "172.21.32.8/29"
-
-shrd_srv_explr_snet_addr_pfx = "172.21.35.192/26"
-
 shrd_srv_arflw_snet_addr_pfx = "172.21.32.16/28"
 
 shrd_srv_hue_snet_addr_pfx = "172.21.32.32/28"
@@ -45,8 +41,6 @@ shrd_srv_jnkns_snet_addr_pfx = "172.21.32.80/28"
 hdi_kfka_snet_addr_pfx = "172.21.32.96/27"
 
 hdi_sprk_snet_addr_pfx = "172.21.32.192/26"
-
-shrd_srv_artif_snet_addr_pfx = "172.21.32.128/27"
 
 
 shsrv_acr = "absitdsdevwusacr001"
