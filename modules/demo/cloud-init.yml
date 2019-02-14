@@ -30,11 +30,9 @@ runcmd:
   - 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
   - 'sudo apt-get -y update'
   - 'sudo apt-get -y install docker-ce'
-  - 'sudo mkdir -p /data/hue'
-  - 'sudo docker login --username absitdsdopswusacr001 --password FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw absitdsdopswusacr001.azurecr.io && sudo docker pull absitdsdopswusacr001.azurecr.io/com.albertsons.itds/docker-hue:1.0.0-SNAPSHOT'
 
 # final_message
 # default: cloud-init boot finished at $TIMESTAMP. Up $UPTIME seconds
 # this message is written by cloud-final when the system is finished
 # its first boot
-final_message: "HUE server is finally up, after $UPTIME seconds"
+final_message: "Demo server is finally up, after $UPTIME seconds"

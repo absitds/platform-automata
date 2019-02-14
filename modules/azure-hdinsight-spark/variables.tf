@@ -18,30 +18,70 @@ variable "hdi_sprk_snet_addr_pfx" {}
 
 variable "shsrv_sa" {}
 
-variable hdi_clus_tir {}
-
-variable hdi_sprk_edg_nd_sz {}
-
-variable hdi_sprk_hd_nd_sz {}
-
-variable hdi_sprk_htp_usr_pwd {}
-
-variable hdi_sprk_htp_usr {}
-
-variable hdi_sprk_wk_nd_cnt {}
-
-variable hdi_sprk_ssh_pub_ky {}
-
-variable hdi_sprk_ssh_user {}
-
-variable hdi_version {}
-
-variable hdi_sprk_wrk_nd_dsk_sz {}
-
-variable hdi_sprk_wrk_nd_dsks_cnt {}
-
-variable hdi_sprk_wrk_nd_sz {}
-
-variable hdi_sprk_zk_nd_sz {}
-
 variable "env_disable_lk" {}
+
+variable "hdi_sprk_clus_nm" {
+}
+variable "hdi_sprk_adm_nm" {
+}
+variable "hdi_sprk_adm_psswd" {
+  
+}
+variable "hdi_sprk_clus_tir" {
+  
+}
+variable "hdi_sprk_eg_nd_sz" {
+  
+}
+variable "hdi_sprk_htp_psswd" {
+  
+}
+variable "hdi_sprk_ssh_usr" {
+  
+}
+variable "hdi_sprk_ssh_psswd" {
+  
+}
+variable "hdi_sprk_strj_acc" {
+  
+}
+variable "hdi_sprk_strj_acc_def_cnt" {
+  
+}
+variable "hdi_sprk_ver" {
+  
+}
+variable "hdi_sprk_vnet_nm" {
+  
+}
+variable "hdi_sprk_wrk_nd_dd_sz" {
+  
+}
+variable "hdi_sprk_wrk_nd_dd_sa_ty" {
+  
+}
+variable "hdi_sprk_wrk_nd_dd_cnt" {
+  
+}
+
+variable "hdi_sprk_hd_nd_sz" {
+  
+}
+variable "hdi_sprk_htp_usr" {
+  
+}
+variable "hdi_sprk_wrk_nd_sz" {
+  
+}
+
+variable "hdi_sprk_zk_nd_sz" {
+  
+}
+
+variable "hdi_sprk_clus_mid" {
+  
+}
+
+
+variable "hdi_sprk_clus_nm_unq_pfx" {
+}

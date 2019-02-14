@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/long-running/shared-services/redis?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/azure-redis"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -27,6 +27,8 @@ terragrunt = {
 ################################################################################
 #                          Terraform Module Variables                          #
 ################################################################################
+
+env_disable_lk = 1
 
 shrd_srv_rdis = {
   rdis_cpcty = 3

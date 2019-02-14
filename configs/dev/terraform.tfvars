@@ -16,8 +16,8 @@ terragrunt = {
     backend = "azurerm"
     config {
       #itds-dops-wus-app
-      storage_account_name  = "absitdsdevswustfsa"
-      container_name        = "itds-dev-wus-tf-state"
+      storage_account_name  = "absitdsdevwustfsa001"
+      container_name        = "itds-dops-wus-tf-state-001"
       arm_client_id         = "4b812f96-1165-4b7f-bc5d-91de6c86e79b"
       arm_subscription_id   = "f0a049d7-bb54-4698-89a3-04b140a152c0"
       arm_client_secret     = "e0hTVYRLSGTracvHY++4Q7psa2NYL57viRUwissnBs4="

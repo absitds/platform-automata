@@ -10,7 +10,7 @@ resource "azurerm_resource_group" "itds_shsrv_srv_rdis_rg" {
 }
 
 resource "azurerm_management_lock" "itds_rg_lk" {
-  name = "${var.env_prefix_hypon}-shrd-rg-lk"
+  name = "${var.env_prefix_hypon}-shrd-rdis-rg-lk"
   scope = "${azurerm_resource_group.itds_shsrv_srv_rdis_rg.id}"
   lock_level = "CanNotDelete"
   notes = "${azurerm_resource_group.itds_shsrv_srv_rdis_rg.name} resource group can not be deleted"

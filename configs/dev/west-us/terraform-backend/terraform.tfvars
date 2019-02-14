@@ -29,9 +29,9 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-tf_sa_name = "absitdsdevwustfsa"
+tf_sa_name = "absitdsdevwustfsa001"
 
-tf_sa_sc_name = "itds-dops-wus-tf-state"
+tf_sa_sc_name = "itds-dops-wus-tf-state-001"
 
 ################################################################################
 #                                     End                                      #

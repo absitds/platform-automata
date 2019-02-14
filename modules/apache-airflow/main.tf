@@ -20,6 +20,14 @@ resource "azurerm_management_lock" "itds_rg_lk" {
 
 data "template_file" "itds_shrd_srv_arflw_cint_scpt" {
   template = "${file("${path.module}/cloud-init.yml")}"
+  vars = {
+    service_name = "isftp"
+    docker_registry_admin = "${var.itds_shrd_srv_acr_admn}"
+    docker_registry_admin_password = "${var.itds_shrd_srv_acr_admn_pswd}"
+    docker_registry_server = "${var.itds_shrd_srv_acr_srvr}"
+    docker_repository = "${var.itds_shrd_srv_acr_repo}"
+    docker_repository_tag = "${var.itds_shrd_srv_acr_repo_tg}"
+  }
 }
 
 data "template_cloudinit_config" "itds_shrd_srv_arflw_cint_conf" {
@@ -151,7 +159,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "itds_shrd
 }
 
 resource "azurerm_virtual_machine" "itds_shrd_srv_arflw_vm" {
-  name = "${var.env_prefix_hypon}-shrd-srv-arflw-vm-${count.index}"
+  name = "${var.shrd_srv_arflw_vm_nm[count.index]}"
   location = "${azurerm_resource_group.itds_shrd_srv_arflw_rg.location}"
   resource_group_name = "${azurerm_resource_group.itds_shrd_srv_arflw_rg.name}"
   network_interface_ids = [
@@ -172,7 +180,7 @@ resource "azurerm_virtual_machine" "itds_shrd_srv_arflw_vm" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name = "${var.env_prefix_hypon}-shrd-srv-arflw-vm-${count.index}"
+    computer_name = "${var.shrd_srv_arflw_vm_hst_nm[count.index]}"
     admin_username = "${var.shrd_srv_arflw_vm_adm}"
     admin_password = "${var.shrd_srv_arflw_vm_pswd}"
     custom_data = "${data.template_cloudinit_config.itds_shrd_srv_arflw_cint_conf.rendered}"

@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/long-running/shared-services/airflow?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/apache-airflow"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -28,7 +28,7 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-shrd_srv_arflw_vm_adm = "itdsdopswusadmin"
+shrd_srv_arflw_vm_adm = "itdsdevwusadmin"
 
 shrd_srv_arflw_ghub_url = "https://github.com/absitds/platform-airflow.git"
 
@@ -75,6 +75,26 @@ shrd_srv_arflw_vm_ip = [
   "172.21.32.20",
   "172.21.32.21"
 ]
+
+shrd_srv_arflw_vm_nm = [
+  "zduwitdsaflw001",
+  "zduwitdsaflw002"
+]
+
+shrd_srv_arflw_vm_hst_nm = [
+  "dgv0109c6",
+  "dgv0109c7"
+]
+
+itds_shrd_srv_acr_admn = "absitdsdopswusacr001"
+
+itds_shrd_srv_acr_admn_pswd = "FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw"
+
+itds_shrd_srv_acr_srvr = "absitdsdopswusacr001.azurecr.io"
+
+itds_shrd_srv_acr_repo = "com.albertsons.itds/docker-airflow"
+
+itds_shrd_srv_acr_repo_tg = "1.0.0-SNAPSHOT"
 
 shrd_srv_arflw_vm = {
   vm_size = "Standard_F2"

@@ -10,4 +10,8 @@ variable "tenant_id" {}
 
 variable "vnet_address_space" {}
 
+variable "shrd_srv_vlt_obj_id" {}
+
+variable "shrd_srv_vlt_app_id" {}
+
 variable "env_disable_lk" {}

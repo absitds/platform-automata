@@ -30,7 +30,7 @@ runcmd:
   - 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
   - 'sudo apt-get -y update'
   - 'sudo apt-get -y install docker-ce'
-  - 'sudo docker pull puckel/docker-airflow'
+  - 'sudo docker login --username absitdsdopswusacr001 --password FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw absitdsdopswusacr001.azurecr.io && sudo docker pull absitdsdopswusacr001.azurecr.io/com.albertsons.itds/docker-airflow:1.0.0-SNAPSHOT'
 
 # final_message
 # default: cloud-init boot finished at $TIMESTAMP. Up $UPTIME seconds

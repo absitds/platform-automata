@@ -2,57 +2,45 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "clusters_kfka_itds_dev_wus_name": {
-            "defaultValue": "kfka-itds-dev-wus",
+        "cluster_name": {
+            "defaultValue": "kfka01-itds-dev-wus-hdi",
             "type": "String"
         },
-        "networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name": {
-            "defaultValue": "itds-dev-wus-hdi-kfka-nsg",
+        "storage_account_name": {
+            "defaultValue": "absitdsdevwuskfkahdi001",
             "type": "String"
         },
-        "userAssignedIdentities_kfka_itds_dev_wus_me_name": {
-            "defaultValue": "kfka-itds-dev-wus-me",
+        "network_security_groups_name": {
+            "defaultValue": "itds-dev-wus-hdi-kfka01-nsg",
             "type": "String"
         },
-        "securityRules_port_any_inbound_name": {
-            "defaultValue": "port_any_inbound",
+        "user_assigned_id_name": {
+            "defaultValue": "kfka01-itds-dev-wus-mid",
             "type": "String"
         },
-        "securityRules_port_any_outbound_name": {
-            "defaultValue": "port_any_outbound",
+        "security_rule_port_any_ob_name": {
+            "defaultValue": "port_any_ob",
             "type": "String"
         },
-        "clusters_kfka_itds_dev_wus_id": {
+        "security_rule_port_any_ib_name": {
+            "defaultValue": "port_any_ib",
+            "type": "String"
+        },
+        "cluster_vnet_id": {
             "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev",
             "type": "String"
         },
-        "clusters_kfka_itds_dev_wus_subnet": {
-            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev/subnets/itds-dev-wus-hdi-kfka-snet",
-            "type": "String"
-        },
-        "clusters_kfka_itds_dev_wus_id_1": {
-            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev",
-            "type": "String"
-        },
-        "clusters_kfka_itds_dev_wus_subnet_1": {
-            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev/subnets/itds-dev-wus-hdi-kfka-snet",
-            "type": "String"
-        },
-        "clusters_kfka_itds_dev_wus_id_2": {
-            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev",
-            "type": "String"
-        },
-        "clusters_kfka_itds_dev_wus_subnet_2": {
-            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev/subnets/itds-dev-wus-hdi-kfka-snet",
+        "cluster_subnet": {
+            "defaultValue": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev/subnets/itds-dev-wus-hdi-kfka01-snet",
             "type": "String"
         }
     },
     "variables": {},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka-rg/providers/Microsoft.HDInsight/clusters/kfka-itds-dev-wus'.",
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.HDInsight/clusters/kfka01-itds-dev-wus-hdi'.",
             "type": "Microsoft.HDInsight/clusters",
-            "name": "[parameters('clusters_kfka_itds_dev_wus_name')]",
+            "name": "[parameters('cluster_name')]",
             "apiVersion": "2018-06-01-preview",
             "location": "West US",
             "tags": {
@@ -65,7 +53,7 @@
                 "clusterVersion": "3.6.1000.67",
                 "osType": "Linux",
                 "clusterDefinition": {
-                    "blueprint": "https://blueprints.azurehdinsight.net/kafka-3.6.1000.67.1812120705.json",
+                    "blueprint": "https://blueprints.azurehdinsight.net/kafka-3.6.1000.67.1902030413.json",
                     "kind": "KAFKA",
                     "componentVersion": {
                         "Kafka": "1.1"
@@ -85,13 +73,13 @@
                                 }
                             },
                             "virtualNetworkProfile": {
-                                "id": "[parameters('clusters_kfka_itds_dev_wus_id')]",
-                                "subnet": "[parameters('clusters_kfka_itds_dev_wus_subnet')]"
+                                "id": "[parameters('cluster_vnet_id')]",
+                                "subnet": "[parameters('cluster_subnet')]"
                             }
                         },
                         {
                             "name": "workernode",
-                            "targetInstanceCount": 3,
+                            "targetInstanceCount": 4,
                             "hardwareProfile": {
                                 "vmSize": "Standard_D3_V2"
                             },
@@ -101,8 +89,8 @@
                                 }
                             },
                             "virtualNetworkProfile": {
-                                "id": "[parameters('clusters_kfka_itds_dev_wus_id_1')]",
-                                "subnet": "[parameters('clusters_kfka_itds_dev_wus_subnet_1')]"
+                                "id": "[parameters('cluster_vnet_id')]",
+                                "subnet": "[parameters('cluster_subnet_1')]"
                             },
                             "dataDisksGroups": [
                                 {
@@ -122,8 +110,8 @@
                                 }
                             },
                             "virtualNetworkProfile": {
-                                "id": "[parameters('clusters_kfka_itds_dev_wus_id_2')]",
-                                "subnet": "[parameters('clusters_kfka_itds_dev_wus_subnet_2')]"
+                                "id": "[parameters('cluster_vnet_id')]",
+                                "subnet": "[parameters('cluster_subnet_2')]"
                             }
                         }
                     ]
@@ -133,9 +121,9 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourcegroups/itds-dev-wus-hdi-kfka-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/kfka-itds-dev-wus-me'.",
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourcegroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/kfka01-itds-dev-wus-mid'.",
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-            "name": "[parameters('userAssignedIdentities_kfka_itds_dev_wus_me_name')]",
+            "name": "[parameters('user_assigned_id_name')]",
             "apiVersion": "2018-11-30",
             "location": "westus",
             "tags": {
@@ -146,15 +134,15 @@
             "scale": null,
             "properties": {
                 "tenantId": "b7f604a0-00a9-4188-9248-42f3a5aac2e9",
-                "principalId": "bf24884b-8c3a-48d0-9bc2-e8c7a10c5685",
-                "clientId": "60ef58d8-9804-44e2-a8ce-37c2e010bd44"
+                "principalId": "edbfa2e6-e34f-4bce-bcd9-ffdd4913ba3a",
+                "clientId": "e6ab45ac-f598-414f-b95d-35a899e20b59"
             },
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka-nsg'.",
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka01-nsg'.",
             "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[parameters('networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name')]",
+            "name": "[parameters('network_security_groups_name')]",
             "apiVersion": "2018-10-01",
             "location": "westus",
             "tags": {
@@ -165,30 +153,11 @@
             "scale": null,
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "1d86f206-0325-49dd-8016-23a28082d605",
+                "resourceGuid": "926843ab-8102-4eef-b2aa-36d03ad82317",
                 "securityRules": [
                     {
-                        "name": "port_any_inbound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
-                        "properties": {
-                            "provisioningState": "Succeeded",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "*",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Inbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    },
-                    {
-                        "name": "port_any_outbound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "name": "port_any_ob",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "protocol": "Tcp",
@@ -204,12 +173,31 @@
                             "sourceAddressPrefixes": [],
                             "destinationAddressPrefixes": []
                         }
+                    },
+                    {
+                        "name": "port_any_ib",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
                     }
                 ],
                 "defaultSecurityRules": [
                     {
                         "name": "AllowVnetInBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Allow inbound traffic from all VMs in VNET",
@@ -229,7 +217,7 @@
                     },
                     {
                         "name": "AllowAzureLoadBalancerInBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Allow inbound traffic from azure load balancer",
@@ -249,7 +237,7 @@
                     },
                     {
                         "name": "DenyAllInBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Deny all inbound traffic",
@@ -269,7 +257,7 @@
                     },
                     {
                         "name": "AllowVnetOutBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Allow outbound traffic from all VMs to all VMs in VNET",
@@ -289,7 +277,7 @@
                     },
                     {
                         "name": "AllowInternetOutBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Allow outbound traffic from all VMs to Internet",
@@ -309,7 +297,7 @@
                     },
                     {
                         "name": "DenyAllOutBound",
-                        "etag": "W/\"d5c69cc6-3209-46ce-9822-c39ae8baeba1\"",
+                        "etag": "W/\"2da92d58-6068-4151-8e9c-366c762fca56\"",
                         "properties": {
                             "provisioningState": "Succeeded",
                             "description": "Deny all outbound traffic",
@@ -332,34 +320,55 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka-nsg/securityRules/port_any_inbound'.",
-            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
-            "name": "[concat(parameters('networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name'), '/', parameters('securityRules_port_any_inbound_name'))]",
-            "apiVersion": "2018-10-01",
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.Storage/storageAccounts/absitdsdevwuskfkahdi001'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "name": "[parameters('storage_account_name')]",
+            "apiVersion": "2018-07-01",
+            "location": "westus",
+            "identity": {
+                "principalId": "32f9454f-8753-4280-b8c5-4be1fe098a6a",
+                "tenantId": "b7f604a0-00a9-4188-9248-42f3a5aac2e9",
+                "type": "SystemAssigned"
+            },
+            "tags": {
+                "admins": "dadam47,ashin14",
+                "environment": "Dev",
+                "group": "ITDS"
+            },
             "scale": null,
             "properties": {
-                "provisioningState": "Succeeded",
-                "protocol": "Tcp",
-                "sourcePortRange": "*",
-                "destinationPortRange": "*",
-                "sourceAddressPrefix": "*",
-                "destinationAddressPrefix": "*",
-                "access": "Allow",
-                "priority": 100,
-                "direction": "Inbound",
-                "sourcePortRanges": [],
-                "destinationPortRanges": [],
-                "sourceAddressPrefixes": [],
-                "destinationAddressPrefixes": []
+                "isHnsEnabled": true,
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
             },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name'))]"
-            ]
+            "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka-nsg/securityRules/port_any_outbound'.",
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka01-nsg/securityRules/port_any_ob'.",
             "type": "Microsoft.Network/networkSecurityGroups/securityRules",
-            "name": "[concat(parameters('networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name'), '/', parameters('securityRules_port_any_outbound_name'))]",
+            "name": "[concat(parameters('network_security_groups_name'), '/', parameters('security_rule_port_any_ob_name'))]",
             "apiVersion": "2018-10-01",
             "scale": null,
             "properties": {
@@ -378,7 +387,32 @@
                 "destinationAddressPrefixes": []
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name'))]"
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('network_security_groups_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/itds-dev-wus-hdi-kfka01-rg/providers/Microsoft.Network/networkSecurityGroups/itds-dev-wus-hdi-kfka01-nsg/securityRules/port_any_ib'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('network_security_groups_name'), '/', parameters('security_rule_port_any_ib_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "Tcp",
+                "sourcePortRange": "*",
+                "destinationPortRange": "*",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 100,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('network_security_groups_name'))]"
             ]
         }
     ]

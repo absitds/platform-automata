@@ -19,6 +19,14 @@ resource "azurerm_management_lock" "itds_rg_lk" {
 
 data "template_file" "itds_shrd_srv_isftp_cint_scpt" {
   template = "${file("${path.module}/cloud-init.yml")}"
+  vars = {
+    service_name = "isftp"
+    docker_registry_admin = "${var.itds_shrd_srv_acr_admn}"
+    docker_registry_admin_password = "${var.itds_shrd_srv_acr_admn_pswd}"
+    docker_registry_server = "${var.itds_shrd_srv_acr_srvr}"
+    docker_repository = "${var.itds_shrd_srv_acr_repo}"
+    docker_repository_tag = "${var.itds_shrd_srv_acr_repo_tg}"
+  }
 }
 
 data "template_cloudinit_config" "itds_shrd_srv_isftp_cint_conf" {
@@ -90,7 +98,9 @@ resource "azurerm_lb" "itds_shrd_srv_isftp_lb" {
 
   frontend_ip_configuration {
     name = "${var.env_prefix_hypon}-shrd-srv-isftp-lb-fic"
-    public_ip_address_id = "${azurerm_public_ip.itds_shrd_srv_isftp_pip.id}"
+    private_ip_address = "${var.shrd_srv_isftp_lb_istat_ip}"
+    subnet_id = "${azurerm_subnet.itds_shrd_srv_isftp_snet.id}"
+    private_ip_address_allocation = "Static"
   }
 }
 
@@ -150,7 +160,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "itds_shrd
 }
 
 resource "azurerm_virtual_machine" "itds_shrd_srv_isftp_vm" {
-  name = "${var.env_prefix_hypon}-shrd-srv-isftp-vm-${count.index}"
+  name = "${var.shrd_srv_isftp_vm_nm[count.index]}"
   location = "${azurerm_resource_group.itds_shrd_srv_isftp_rg.location}"
   resource_group_name = "${azurerm_resource_group.itds_shrd_srv_isftp_rg.name}"
   network_interface_ids = [
@@ -171,7 +181,7 @@ resource "azurerm_virtual_machine" "itds_shrd_srv_isftp_vm" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name = "${var.env_prefix_hypon}-shrd-srv-isftp-vm-${count.index}"
+    computer_name = "${var.shrd_srv_isftp_vm_hst_nm[count.index]}"
     admin_username = "${var.shrd_srv_isftp_vm_adm}"
     admin_password = "${var.shrd_srv_isftp_vm_pswd}"
     custom_data = "${data.template_cloudinit_config.itds_shrd_srv_isftp_cint_conf.rendered}"

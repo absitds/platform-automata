@@ -40,20 +40,19 @@ resource "azurerm_key_vault" "itds_shrd_srv_vlt" {
 
 }
 
-/*
-resource "azurerm_key_vault_access_policy" "test" {
+resource "azurerm_key_vault_access_policy" "itds_shrd_srv_vlt_acs_plc" {
   vault_name          = "${azurerm_key_vault.itds_shrd_srv_vlt.name}"
   resource_group_name = "${azurerm_key_vault.itds_shrd_srv_vlt.resource_group_name}"
-
   tenant_id = "${var.tenant_id}"
-  object_id = "11111111-1111-1111-1111-111111111111"
-
+  object_id = "${var.shrd_srv_vlt_obj_id}"
+  application_id = "${var.shrd_srv_vlt_app_id}"
   key_permissions = [
     "get",
   ]
-
   secret_permissions = [
     "get",
   ]
+  certificate_permissions = [
+    "get",
+  ]
 }
-*/

@@ -30,10 +30,11 @@ runcmd:
   - 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
   - 'sudo apt-get -y update'
   - 'sudo apt-get -y install docker-ce'
-  - 'sudo docker pull atmoz/sftp'
+  - 'sudo mkdir -p /data/${service_name}/home'
+  - 'sudo docker login --username ${docker_registry_admin} --password ${docker_registry_admin_password} ${docker_registry_server} && sudo docker pull ${docker_registry_server}/${docker_repository}:${docker_repository_tag}'
 
 # final_message
 # default: cloud-init boot finished at $TIMESTAMP. Up $UPTIME seconds
 # this message is written by cloud-final when the system is finished
 # its first boot
-final_message: "SFTP server is finally up, after $UPTIME seconds"
+final_message: "${service_name} service is finally up, after $UPTIME seconds"

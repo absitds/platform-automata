@@ -60,8 +60,29 @@ variable "shrd_srv_isftp_vm" {
   type = "map"
 }
 
+variable "shrd_srv_isftp_vm_hst_nm" {
+  type = "list"
+}
+
+variable "shrd_srv_isftp_vm_nm" {
+  type = "list"
+}
+
 variable "shrd_srv_isftp_vm_adm"{}
 
 variable "shrd_srv_isftp_vm_pswd" {}
 
 variable "env_disable_lk" {}
+
+variable "shrd_srv_isftp_lb_istat_ip" {}
+
+variable "itds_shrd_srv_acr_admn" {
+}
+variable "itds_shrd_srv_acr_admn_pswd" {
+}
+variable "itds_shrd_srv_acr_srvr" {
+}
+variable "itds_shrd_srv_acr_repo" {
+}
+variable "itds_shrd_srv_acr_repo_tg" {
+}

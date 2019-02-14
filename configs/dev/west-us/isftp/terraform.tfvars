@@ -28,19 +28,23 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-shrd_srv_isftp_vm_adm = "itdsdopswusadmin"
+shrd_srv_isftp_vm_adm = "itdsdevwusadmin"
 
+shrd_srv_isftp_lb_istat_ip = "172.21.32.69"
 
 shrd_srv_isftp_nsg_ibnd_rl = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_nsg_ibnd_rl_src_pfx = [
   "*",
+  "*"
 ]
 
 shrd_srv_isftp_nsg_ibnd_rl_dst_pfx = [
   "*",
+  "*"
 ]
 
 shrd_srv_isftp_nsg_obnd_rl = [
@@ -53,20 +57,41 @@ shrd_srv_isftp_nsg_obnd_rl_dst_pfx = [
 ]
 
 shrd_srv_isftp_lb_fnt_prt = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_lb_prb_prt = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_lb_bck_prt = [
+  "22",
   "2222"
 ]
 
 shrd_srv_isftp_vm_ip = [
-  "172.21.32.69"
+  "172.21.32.70"
 ]
+
+shrd_srv_isftp_vm_nm = [
+  "zduwitdsiftp001"
+]
+
+shrd_srv_isftp_vm_hst_nm = [
+  "dgv0109c6"
+]
+
+itds_shrd_srv_acr_admn = "absitdsdopswusacr001"
+
+itds_shrd_srv_acr_admn_pswd = "FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw"
+
+itds_shrd_srv_acr_srvr = "absitdsdopswusacr001.azurecr.io"
+
+itds_shrd_srv_acr_repo = "com.albertsons.itds/docker-isftp"
+
+itds_shrd_srv_acr_repo_tg = "1.0.0-SNAPSHOT"
 
 shrd_srv_isftp_vm = {
   vm_size = "Standard_F2"

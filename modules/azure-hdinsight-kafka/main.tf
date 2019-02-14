@@ -10,12 +10,12 @@ data "azurerm_virtual_network" "itds_vnet" {
 }
 
 resource "azurerm_resource_group" "itds_hdi_kfka_rg" {
-  name = "${var.env_prefix_hypon}-hdi-kfka-rg"
+  name = "${var.env_prefix_hypon}-hdi-${var.hdi_kfka_clus_nm_unq_pfx}-rg"
   location = "${var.env_location}"
 }
 
 resource "azurerm_management_lock" "itds_rg_lk" {
-  name = "${var.env_prefix_hypon}-shrd-rg-lk"
+  name = "${var.env_prefix_hypon}-hdi-${var.hdi_kfka_clus_nm_unq_pfx}-rg-lk"
   scope = "${azurerm_resource_group.itds_hdi_kfka_rg.id}"
   lock_level = "CanNotDelete"
   notes = "${azurerm_resource_group.itds_hdi_kfka_rg.name} resource group can not be deleted"
@@ -25,16 +25,16 @@ resource "azurerm_management_lock" "itds_rg_lk" {
 resource "azurerm_user_assigned_identity" "itds_hdi_kfka_mid" {
   resource_group_name = "${azurerm_resource_group.itds_hdi_kfka_rg.name}"
   location            = "${azurerm_resource_group.itds_hdi_kfka_rg.location}"
-  name = "${var.env_prefix_hypon}-hdi-kfka-mid"
+  name = "${var.hdi_kfka_clus_mid}"
 }
 
 resource "azurerm_network_security_group" "itds_hdi_kfka_nsg" {
-  name = "${var.env_prefix_hypon}-hdi-kfka-nsg"
+  name = "${var.env_prefix_hypon}-hdi-${var.hdi_kfka_clus_nm_unq_pfx}-nsg"
   resource_group_name = "${azurerm_resource_group.itds_hdi_kfka_rg.name}"
   location = "${azurerm_resource_group.itds_hdi_kfka_rg.location}"
 
   security_rule {
-    name = "port_any_inbound"
+    name = "port_any_ib"
     priority = 100
     direction = "Inbound"
     access = "Allow"
@@ -46,7 +46,7 @@ resource "azurerm_network_security_group" "itds_hdi_kfka_nsg" {
   }
 
   security_rule {
-    name = "port_any_outbound"
+    name = "port_any_ob"
     priority = 100
     direction = "Outbound"
     access = "Allow"
@@ -60,7 +60,7 @@ resource "azurerm_network_security_group" "itds_hdi_kfka_nsg" {
 }
 
 resource "azurerm_subnet" "itds_hdi_kfka_snet" {
-  name = "${var.env_prefix_hypon}-hdi-kfka-snet"
+  name = "${var.env_prefix_hypon}-hdi-${var.hdi_kfka_clus_nm_unq_pfx}-snet"
   virtual_network_name = "${var.vnet_name}"
   resource_group_name = "${var.vnet_rg_name}"
   address_prefix = "${var.hdi_kfka_snet_addr_pfx}"
@@ -72,4 +72,36 @@ resource "azurerm_subnet_network_security_group_association" "itds_hdi_kfka_snet
 }
 
 
-#HDInsight clusters in the same Virtual Network requires each cluster to have unique first six characters
+resource "null_resource" "itds_hdi_kfka_sa" {
+  provisioner "local-exec" {
+    command = "az extension add --name storage-preview && az storage account create --name ${var.hdi_kfka_strj_acc} --resource-group ${azurerm_resource_group.itds_hdi_kfka_rg.name} --kind StorageV2 --hierarchical-namespace --https-only true --assign-identity --sku Standard_LRS"
+  }
+  depends_on = [
+    "azurerm_resource_group.itds_hdi_kfka_rg"
+  ]
+}
+
+
+resource "azurerm_role_assignment" "itds_hdi_kfka_sa" {
+  scope                = "${data.azurerm_subscription.current.id}"
+  role_definition_id = "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+  principal_id         = "${azurerm_user_assigned_identity.itds_hdi_kfka_mid.principal_id}"
+}
+
+/*
+
+resource "null_resource" "itds_hdi_kfka" {
+  provisioner "local-exec" {
+    command = "az hdinsight create --name ${var.hdi_kfka_clus_nm} --resource-group ${azurerm_resource_group.itds_hdi_kfka_rg.name} --type spark --assign-identity ${azurerm_user_assigned_identity.itds_hdi_kfka_mid.name} --cluster-tier ${var.hdi_kfka_clus_tir} --edgenode-size ${var.hdi_kfka_eg_nd_sz} --esp false --headnode-size ${var.hdi_kfka_hd_nd_sz} --http-password ${var.hdi_kfka_htp_psswd} --http-user ${var.hdi_kfka_htp_usr} --location ${azurerm_resource_group.itds_hdi_kfka_rg.location} --size ${var.hdi_kfka_wrk_nd_sz} --ssh-user ${var.hdi_kfka_ssh_usr} --ssh-password ${var.hdi_kfka_ssh_psswd} --storage-account ${var.hdi_kfka_strj_acc} --storage-default-container ${var.hdi_kfka_strj_acc_def_cnt} --subnet ${azurerm_subnet.itds_hdi_kfka_snet.name} --subscription ${data.azurerm_subscription.current.display_name} --version ${var.hdi_kfka_ver} --vnet-name ${var.hdi_kfka_vnet_nm} --workernode-data-disk-size ${var.hdi_kfka_wrk_nd_dd_sz} --workernode-data-disk-storage-account-type ${var.hdi_kfka_wrk_nd_dd_sa_ty} --workernode-data-disks-per-node ${var.hdi_kfka_wrk_nd_dd_cnt} --workernode-size ${var.hdi_kfka_wrk_nd_sz} --zookeepernode-size ${var.hdi_kfka_zk_nd_sz}"
+  }
+  depends_on = [
+    "azurerm_user_assigned_identity.itds_hdi_kfka_mid",
+    "azurerm_resource_group.itds_hdi_kfka_rg",
+    "azurerm_subnet_network_security_group_association.itds_hdi_kfka_snet_nsg_asso",
+    "azurerm_subnet.itds_hdi_kfka_snet",
+    "null_resource.itds_hdi_kfka_sa"
+
+  ]
+}
+
+*/

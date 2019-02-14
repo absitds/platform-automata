@@ -5,12 +5,12 @@ terraform {
 data "azurerm_subscription" "current" {}
 
 resource "azurerm_resource_group" "itds_shrd_rg" {
-  name = "${var.env_prefix_hypon}-shrd-rg"
+  name = "${var.env_prefix_hypon}-shrd-sa-rg"
   location = "${var.env_location}"
 }
 
 resource "azurerm_management_lock" "itds_rg_lk" {
-  name = "${var.env_prefix_hypon}-shrd-rg-lk"
+  name = "${var.env_prefix_hypon}-shrd-sa-rg-lk"
   scope = "${azurerm_resource_group.itds_shrd_rg.id}"
   lock_level = "CanNotDelete"
   notes = "${azurerm_resource_group.itds_shrd_rg.name} resource group can not be deleted"

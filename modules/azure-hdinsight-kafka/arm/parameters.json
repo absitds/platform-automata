@@ -2,38 +2,29 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "clusters_kfka_itds_dev_wus_name": {
-            "value": null
+        "cluster_name": {
+            "value": "kfka01-itds-dev-wus-hdi"
         },
-        "networkSecurityGroups_itds_dev_wus_hdi_kfka_nsg_name": {
-            "value": null
+        "storage_account_name": {
+            "value": "absitdsdevwuskfkahdi001"
         },
-        "userAssignedIdentities_kfka_itds_dev_wus_me_name": {
-            "value": null
+        "network_security_groups_name": {
+            "value": "itds-dev-wus-hdi-kfka01-nsg"
         },
-        "securityRules_port_any_inbound_name": {
-            "value": null
+        "user_assigned_id_name": {
+            "value": "kfka01-itds-dev-wus-mid"
         },
-        "securityRules_port_any_outbound_name": {
-            "value": null
+        "security_rule_port_any_ob_name": {
+            "value": "port_any_ob"
         },
-        "clusters_kfka_itds_dev_wus_id": {
-            "value": null
+        "security_rule_port_any_ib_name": {
+            "value": "port_any_ib"
         },
-        "clusters_kfka_itds_dev_wus_subnet": {
-            "value": null
+        "cluster_vnet_id": {
+            "value": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev"
         },
-        "clusters_kfka_itds_dev_wus_id_1": {
-            "value": null
-        },
-        "clusters_kfka_itds_dev_wus_subnet_1": {
-            "value": null
-        },
-        "clusters_kfka_itds_dev_wus_id_2": {
-            "value": null
-        },
-        "clusters_kfka_itds_dev_wus_subnet_2": {
-            "value": null
+        "cluster_subnet": {
+            "value": "/subscriptions/f0a049d7-bb54-4698-89a3-04b140a152c0/resourceGroups/Abs-ITDS-Dev/providers/Microsoft.Network/virtualNetworks/Abs-ITDS-Dev/subnets/itds-dev-wus-hdi-kfka01-snet"
         }
     }
 }

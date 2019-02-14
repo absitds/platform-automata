@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/long-running/hdinsight/kafka?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/azure-hdinsight-kafka"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -29,29 +29,28 @@ terragrunt = {
 ################################################################################
 
 
-hdi_clus_tir = "standard"
-
-hdi_kfka_edg_nd_sz = "Standard_D2"
-
-hdi_kfka_hd_nd_sz = "Standard_D4"
-
-hdi_kfka_htp_usr = "itdsdevwusadminw"
-
-hdi_kfka_wk_nd_cnt = "3"
-
-hdi_kfka_ssh_pub_ky = ""
-
-hdi_kfka_ssh_user = "itdsdevwusadmin"
-
-hdi_version = "3.6"
-
-hdi_kfka_wrk_nd_dsk_sz = "1024"
-
-hdi_kfka_wrk_nd_dsks_cnt = "1"
-
-hdi_kfka_wrk_nd_sz = "Standard_D4"
-
-hdi_kfka_zk_nd_sz = "Standard_D2"
+hdi_kfka_clus_nm_unq_pfx="kfka01"
+hdi_kfka_clus_nm = "kfka01-itds-dev-wus-hdi"
+hdi_kfka_clus_mid = "kfka01-itds-dev-wus-mid"
+hdi_kfka_adm_nm = "itdsdevwusadmin"
+hdi_kfka_adm_psswd = "ztrdsed_vwE_53_243"
+hdi_kfka_clus_tir = "standard"
+hdi_kfka_htp_usr = "itdsdevwusadminhttp"
+hdi_kfka_htp_psswd = "ztrdsed_vwE_53_243"
+hdi_kfka_ssh_usr = "itdsdevwusadmin"
+hdi_kfka_ssh_psswd = "ztrdsed_vwE_53_243"
+hdi_kfka_strj_acc = "absitdsdevwuskfkahdi001"
+hdi_kfka_strj_acc_def_cnt = "sp001-itds-wus-hdi"
+hdi_kfka_ver = "2.6"
+hdi_kfka_vnet_nm = "Abs-ITDS-Dev"
+hdi_kfka_wrk_nd_dd_sz = "1024"
+hdi_kfka_wrk_nd_dd_sa_ty = "standard_lrs"
+hdi_kfka_wrk_nd_dd_cnt = "2"
+hdi_kfka_eg_nd_sz = "Standard_D4s_v3"
+hdi_kfka_hd_nd_sz = "Standard_D4s_v3"
+hdi_kfka_wrk_nd_sz = "4"
+hdi_kfka_zk_nd_sz = "Standard_D4s_v3"
+hdi_kfka_snet_addr_pfx = "172.21.32.96/27"
 
 ################################################################################
 #                                     End                                      #

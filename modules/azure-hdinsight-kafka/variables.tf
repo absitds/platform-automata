@@ -18,30 +18,70 @@ variable "hdi_kfka_snet_addr_pfx" {}
 
 variable "shsrv_sa" {}
 
-variable hdi_clus_tir {}
-
-variable hdi_kfka_edg_nd_sz {}
-
-variable hdi_kfka_hd_nd_sz {}
-
-variable hdi_kfka_htp_usr_pwd {}
-
-variable hdi_kfka_htp_usr {}
-
-variable hdi_kfka_wk_nd_cnt {}
-
-variable hdi_kfka_ssh_pub_ky {}
-
-variable hdi_kfka_ssh_user {}
-
-variable hdi_version {}
-
-variable hdi_kfka_wrk_nd_dsk_sz {}
-
-variable hdi_kfka_wrk_nd_dsks_cnt {}
-
-variable hdi_kfka_wrk_nd_sz {}
-
-variable hdi_kfka_zk_nd_sz {}
-
 variable "env_disable_lk" {}
+
+variable "hdi_kfka_clus_nm" {
+}
+variable "hdi_kfka_adm_nm" {
+}
+variable "hdi_kfka_adm_psswd" {
+
+}
+variable "hdi_kfka_clus_tir" {
+
+}
+variable "hdi_kfka_eg_nd_sz" {
+
+}
+variable "hdi_kfka_htp_psswd" {
+
+}
+variable "hdi_kfka_ssh_usr" {
+
+}
+variable "hdi_kfka_ssh_psswd" {
+
+}
+variable "hdi_kfka_strj_acc" {
+
+}
+variable "hdi_kfka_strj_acc_def_cnt" {
+
+}
+variable "hdi_kfka_ver" {
+
+}
+variable "hdi_kfka_vnet_nm" {
+
+}
+variable "hdi_kfka_wrk_nd_dd_sz" {
+
+}
+variable "hdi_kfka_wrk_nd_dd_sa_ty" {
+
+}
+variable "hdi_kfka_wrk_nd_dd_cnt" {
+
+}
+
+variable "hdi_kfka_hd_nd_sz" {
+
+}
+variable "hdi_kfka_htp_usr" {
+
+}
+variable "hdi_kfka_wrk_nd_sz" {
+
+}
+
+variable "hdi_kfka_zk_nd_sz" {
+
+}
+
+variable "hdi_kfka_clus_mid" {
+
+}
+
+
+variable "hdi_kfka_clus_nm_unq_pfx" {
+}

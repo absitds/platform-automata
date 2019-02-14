@@ -65,3 +65,21 @@ variable "shrd_srv_hue_vm_adm"{}
 variable "shrd_srv_hue_vm_pswd" {}
 
 variable "env_disable_lk" {}
+
+variable "shrd_srv_hue_vm_nm" {
+  type = "list"
+}
+variable "shrd_srv_hue_vm_hst_nm" {
+  type = "list"
+}
+
+variable "itds_shrd_srv_acr_admn" {
+}
+variable "itds_shrd_srv_acr_admn_pswd" {
+}
+variable "itds_shrd_srv_acr_srvr" {
+}
+variable "itds_shrd_srv_acr_repo" {
+}
+variable "itds_shrd_srv_acr_repo_tg" {
+}
