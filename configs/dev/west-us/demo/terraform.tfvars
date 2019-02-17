@@ -15,7 +15,7 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/xdemo"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/demo"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -28,30 +28,30 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-shrd_srv_xdemo_vm_adm = "itdsdevwusadmin"
+shrd_srv_demo_vm_adm = "itdsdevwusadmin"
 
-shrd_srv_xdemo_nsg_ibnd_rl = [
+shrd_srv_demo_nsg_ibnd_rl = [
   "*"
 ]
 
-shrd_srv_xdemo_nsg_ibnd_rl_src_pfx = [
+shrd_srv_demo_nsg_ibnd_rl_src_pfx = [
   "*"
 ]
 
-shrd_srv_xdemo_nsg_ibnd_rl_dst_pfx = [
+shrd_srv_demo_nsg_ibnd_rl_dst_pfx = [
   "*"
 ]
 
-shrd_srv_xdemo_nsg_obnd_rl = [
+shrd_srv_demo_nsg_obnd_rl = [
 ]
 
-shrd_srv_xdemo_nsg_obnd_rl_src_pfx = [
+shrd_srv_demo_nsg_obnd_rl_src_pfx = [
 ]
 
-shrd_srv_xdemo_nsg_obnd_rl_dst_pfx = [
+shrd_srv_demo_nsg_obnd_rl_dst_pfx = [
 ]
 
-shrd_srv_xdemo_lb_fnt_prt = [
+shrd_srv_demo_lb_fnt_prt = [
   "9000",
   "9092",
   "9200",
@@ -61,7 +61,7 @@ shrd_srv_xdemo_lb_fnt_prt = [
   "3306"
 ]
 
-shrd_srv_xdemo_lb_prb_prt = [
+shrd_srv_demo_lb_prb_prt = [
   "9000",
   "9092",
   "9200",
@@ -71,7 +71,7 @@ shrd_srv_xdemo_lb_prb_prt = [
   "3306"
 ]
 
-shrd_srv_xdemo_lb_bck_prt = [
+shrd_srv_demo_lb_bck_prt = [
   "9000",
   "9092",
   "9200",
@@ -81,15 +81,21 @@ shrd_srv_xdemo_lb_bck_prt = [
   "3306"
 ]
 
-shrd_srv_xdemo_vm_ip = [
-  "172.21.35.228"
+shrd_srv_demo_vm_ip = [
+  "172.21.35.228",
+  "172.21.35.229",
+  "172.21.35.230",
+  "172.21.35.231"
 ]
 
-shrd_srv_xdemo_vm_nm = [
-  "zduwitdsxdemo001"
+shrd_srv_demo_vm_nm = [
+  "zduwitdsdemo001",
+  "zduwitdsdemo002",
+  "zduwitdsdemo003",
+  "zduwitdsdemo004"
 ]
 
-shrd_srv_xdemo_vm = {
+shrd_srv_demo_vm = {
   vm_size = "Standard_F8"
   vm_img_publisher = "Canonical"
   vm_img_offer = "UbuntuServer"
