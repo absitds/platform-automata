@@ -72,13 +72,23 @@ variable "shrd_srv_arflw_vm_nm" {
 variable "shrd_srv_arflw_vm_hst_nm" {
   type = "list"
 }
+
 variable "itds_shrd_srv_acr_admn" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_admn_pswd" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_srvr" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_repo" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_repo_tg" {
+  default = ""
+}
+
+variable "shrd_srv_arflw_lb_ip" {
+  default = ""
 }

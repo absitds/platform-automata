@@ -21,11 +21,13 @@ data "template_file" "itds_shrd_srv_hue_cint_scpt" {
   template = "${file("${path.module}/cloud-init.yml")}"
   vars = {
     service_name = "isftp"
+/*
     docker_registry_admin = "${var.itds_shrd_srv_acr_admn}"
     docker_registry_admin_password = "${var.itds_shrd_srv_acr_admn_pswd}"
     docker_registry_server = "${var.itds_shrd_srv_acr_srvr}"
     docker_repository = "${var.itds_shrd_srv_acr_repo}"
     docker_repository_tag = "${var.itds_shrd_srv_acr_repo_tg}"
+*/
   }
 }
 
@@ -84,13 +86,6 @@ resource "azurerm_subnet_network_security_group_association" "itds_shrd_srv_hue_
   network_security_group_id = "${azurerm_network_security_group.itds_shrd_srv_hue_nsg.id}"
 }
 
-resource "azurerm_public_ip" "itds_shrd_srv_hue_pip" {
-  name = "${var.env_prefix_hypon}-shrd-srv-hue-pip"
-  location = "${azurerm_resource_group.itds_shrd_srv_hue_rg.location}"
-  resource_group_name = "${azurerm_resource_group.itds_shrd_srv_hue_rg.name}"
-  allocation_method = "Static"
-}
-
 resource "azurerm_lb" "itds_shrd_srv_hue_lb" {
   name = "${var.env_prefix_hypon}-shrd-srv-hue-lb"
   location = "${azurerm_resource_group.itds_shrd_srv_hue_rg.location}"
@@ -98,7 +93,10 @@ resource "azurerm_lb" "itds_shrd_srv_hue_lb" {
 
   frontend_ip_configuration {
     name = "${var.env_prefix_hypon}-shrd-srv-hue-lb-fic"
-    public_ip_address_id = "${azurerm_public_ip.itds_shrd_srv_hue_pip.id}"
+    private_ip_address = "${var.shrd_srv_hue_lb_ip}"
+    subnet_id = "${azurerm_subnet.itds_shrd_srv_hue_snet.id}"
+    private_ip_address_allocation = "Static"
+
   }
 }
 

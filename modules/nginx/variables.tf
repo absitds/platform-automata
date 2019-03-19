@@ -14,57 +14,69 @@ variable "vnet_start_ip" {}
 
 variable "vnet_end_ip" {}
 
-variable "shrd_srv_demo_snet_addr_pfx" {}
+variable "shrd_srv_nginx_snet_addr_pfx" {}
 
-variable "shrd_srv_demo_nsg_ibnd_rl" {
+variable "shrd_srv_nginx_nsg_ibnd_rl" {
   type = "list"
 }
 
-variable "shrd_srv_demo_nsg_ibnd_rl_src_pfx" {
+variable "shrd_srv_nginx_nsg_ibnd_rl_src_pfx" {
   type = "list"
 }
 
-variable "shrd_srv_demo_nsg_ibnd_rl_dst_pfx" {
+variable "shrd_srv_nginx_nsg_ibnd_rl_dst_pfx" {
   type = "list"
 }
 
-variable "shrd_srv_demo_nsg_obnd_rl" {
+variable "shrd_srv_nginx_nsg_obnd_rl" {
   type = "list"
 }
 
-variable "shrd_srv_demo_nsg_obnd_rl_src_pfx" {
+variable "shrd_srv_nginx_nsg_obnd_rl_src_pfx" {
   type = "list"
 }
 
-variable "shrd_srv_demo_nsg_obnd_rl_dst_pfx" {
+variable "shrd_srv_nginx_nsg_obnd_rl_dst_pfx" {
   type = "list"
 }
 
-variable "shrd_srv_demo_lb_prb_prt" {
+variable "shrd_srv_nginx_lb_prb_prt" {
   type = "list"
 }
 
-variable "shrd_srv_demo_lb_bck_prt" {
+variable "shrd_srv_nginx_lb_bck_prt" {
   type = "list"
 }
 
-variable "shrd_srv_demo_lb_fnt_prt" {
+variable "shrd_srv_nginx_lb_fnt_prt" {
   type = "list"
 }
 
-variable "shrd_srv_demo_vm_ip" {
+variable "shrd_srv_nginx_vm_ip" {
   type = "list"
 }
 
-variable "shrd_srv_demo_vm_nm" {
+variable "shrd_srv_nginx_vm_nm" {
   type = "list"
 }
 
-variable "shrd_srv_demo_vm" {
+variable "shrd_srv_nginx_vm" {
   type = "map"
 }
-variable "shrd_srv_demo_vm_adm"{}
+variable "shrd_srv_nginx_vm_adm"{}
 
-variable "shrd_srv_demo_vm_pswd" {}
+variable "shrd_srv_nginx_vm_pswd" {}
 
 variable "env_disable_lk" {}
+
+
+variable "itds_shrd_srv_acr_admn" {
+}
+variable "itds_shrd_srv_acr_admn_pswd" {
+}
+variable "itds_shrd_srv_acr_srvr" {
+}
+variable "itds_shrd_srv_acr_repo" {
+}
+variable "itds_shrd_srv_acr_repo_tg" {
+}

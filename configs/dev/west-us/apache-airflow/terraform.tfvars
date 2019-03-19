@@ -30,7 +30,7 @@ terragrunt = {
 
 shrd_srv_arflw_vm_adm = "itdsdevwusadmin"
 
-shrd_srv_arflw_ghub_url = "https://github.com/absitds/platform-airflow.git"
+#shrd_srv_arflw_ghub_url = "https://github.com/absitds/platform-airflow.git"
 
 shrd_srv_arflw_nsg_ibnd_rl = [
   "22",
@@ -38,11 +38,15 @@ shrd_srv_arflw_nsg_ibnd_rl = [
 ]
 
 shrd_srv_arflw_nsg_ibnd_rl_src_pfx = [
-  "*",
-  "*"
+  "10.0.0.0/8",
+  "172.16.0.0/12",
+  "165.19.0.0/16",
+  "167.146.0.0/16"
 ]
 
 shrd_srv_arflw_nsg_ibnd_rl_dst_pfx = [
+  "*",
+  "*",
   "*",
   "*"
 ]
@@ -55,6 +59,8 @@ shrd_srv_arflw_nsg_obnd_rl_src_pfx = [
 
 shrd_srv_arflw_nsg_obnd_rl_dst_pfx = [
 ]
+
+shrd_srv_arflw_lb_ip = "172.21.32.23"
 
 shrd_srv_arflw_lb_fnt_prt = [
   "22",
@@ -86,15 +92,15 @@ shrd_srv_arflw_vm_hst_nm = [
   "dgv0109c7"
 ]
 
-itds_shrd_srv_acr_admn = "absitdsdopswusacr001"
+#itds_shrd_srv_acr_admn = "absitdsdopswusacr001"
 
-itds_shrd_srv_acr_admn_pswd = "FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw"
+#itds_shrd_srv_acr_admn_pswd = "FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw"
 
-itds_shrd_srv_acr_srvr = "absitdsdopswusacr001.azurecr.io"
+#itds_shrd_srv_acr_srvr = "absitdsdopswusacr001.azurecr.io"
 
-itds_shrd_srv_acr_repo = "com.albertsons.itds/docker-airflow"
+#itds_shrd_srv_acr_repo = "com.albertsons.itds/docker-airflow"
 
-itds_shrd_srv_acr_repo_tg = "1.0.0-SNAPSHOT"
+#itds_shrd_srv_acr_repo_tg = "1.0.0-SNAPSHOT"
 
 shrd_srv_arflw_vm = {
   vm_size = "Standard_F2"

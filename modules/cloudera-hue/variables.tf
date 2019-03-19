@@ -74,12 +74,20 @@ variable "shrd_srv_hue_vm_hst_nm" {
 }
 
 variable "itds_shrd_srv_acr_admn" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_admn_pswd" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_srvr" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_repo" {
+  default = ""
 }
 variable "itds_shrd_srv_acr_repo_tg" {
+  default = ""
+}
+variable "shrd_srv_hue_lb_ip" {
+  default = ""
 }

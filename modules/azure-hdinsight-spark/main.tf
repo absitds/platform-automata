@@ -88,7 +88,7 @@ resource "azurerm_role_assignment" "itds_hdi_sprk_sa" {
   principal_id         = "${azurerm_user_assigned_identity.itds_hdi_sprk_mid.principal_id}"
 }
 
-/*
+
 
 resource "null_resource" "itds_hdi_sprk" {
   provisioner "local-exec" {
@@ -104,4 +104,3 @@ resource "null_resource" "itds_hdi_sprk" {
   ]
 }
 
-*/

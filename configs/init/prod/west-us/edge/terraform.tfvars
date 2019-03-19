@@ -15,7 +15,8 @@ terragrunt = {
   # parameter, along with any files in the working directory, into a temporary
   # folder, and execute Terraform commands in that folder.
   terraform {
-    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/cloudera-hue"
+    #source = "git@github.com:ATLAS-IS/ITDS-config.git//modules/itds-config-modules/src/main/tf/backend?ref=master"
+    source = "/Users/Shingate/Documents/Albertson/BitBucket/Workspace/platform-automata/modules/edge"
   }
 
   # Include all settings from the root terraform.tfvars file
@@ -28,89 +29,9 @@ terragrunt = {
 #                          Terraform Module Variables                          #
 ################################################################################
 
-shrd_srv_hue_vm_adm = "itdsdevwusadmin"
-
-shrd_srv_hue_ghub_url = "https://github.com/absitds/platform-hue.git"
-
-shrd_srv_hue_nsg_ibnd_rl = [
-  "22",
-  "8888"
-]
 
 
-shrd_srv_hue_nsg_ibnd_rl_src_pfx = [
-  "10.0.0.0/8",
-  "172.16.0.0/12",
-  "165.19.0.0/16",
-  "167.146.0.0/16"
-]
 
-shrd_srv_hue_nsg_ibnd_rl_dst_pfx = [
-  "*",
-  "*",
-  "*",
-  "*"
-]
-
-shrd_srv_hue_nsg_obnd_rl = [
-]
-
-shrd_srv_hue_nsg_obnd_rl_src_pfx = [
-]
-
-shrd_srv_hue_nsg_obnd_rl_dst_pfx = [
-]
-
-shrd_srv_hue_lb_ip = "172.21.32.37"
-
-shrd_srv_hue_lb_fnt_prt = [
-  "22",
-  "8888"
-]
-
-shrd_srv_hue_lb_prb_prt = [
-  "22",
-  "8888"
-]
-
-shrd_srv_hue_lb_bck_prt = [
-  "22",
-  "8888"
-]
-
-shrd_srv_hue_vm_ip = [
-  "172.21.32.36"
-]
-
-shrd_srv_hue_vm_nm = [
-  "zduwitdschue001"
-]
-
-shrd_srv_hue_vm_hst_nm = [
-  "dgv0109c6"
-]
-
-/*
-itds_shrd_srv_acr_admn = "absitdsdopswusacr001"
-
-itds_shrd_srv_acr_admn_pswd = "FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw"
-
-itds_shrd_srv_acr_srvr = "absitdsdopswusacr001.azurecr.io"
-
-itds_shrd_srv_acr_repo = "com.albertsons.itds/docker-hue"
-
-itds_shrd_srv_acr_repo_tg = "1.0.0-SNAPSHOT"
-*/
-
-shrd_srv_hue_vm = {
-  vm_size = "Standard_F2"
-  vm_img_publisher = "Canonical"
-  vm_img_offer = "UbuntuServer"
-  vm_img_sku = "18.04-LTS"
-  vm_img_ver = "latest"
-  vm_mg_dsk_ty = "Standard_LRS"
-  vm_mg_dsk_sz = 1024
-}
 
 ################################################################################
 #                                     End                                      #

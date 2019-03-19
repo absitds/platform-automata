@@ -29,8 +29,18 @@ runcmd:
   - 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
   - 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
   - 'sudo apt-get -y update'
-  - 'sudo apt-get -y install docker-ce'
-  - 'sudo docker login --username absitdsdopswusacr001 --password FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw absitdsdopswusacr001.azurecr.io && sudo docker pull absitdsdopswusacr001.azurecr.io/com.albertsons.itds/docker-airflow:1.0.0-SNAPSHOT'
+  - |
+    export AIRFLOW_VERSION=1.9.0
+    && export AIRFLOW_HOME=/home/itdsdopswusadmin/airflow
+    && mkdir /home/itdsdopswusadmin/airflow
+    && export CONFIG_FILE=/home/itdsdopswusadmin/airflow.cfg
+    && sudo apt-get install mysql-client  -y
+    && sudo apt-get install libmysqlclient-dev -y
+    && pip install apache-airflow[crypto,celery,hive,jdbc,mysql]==$AIRFLOW_VERSION
+    && pip install celery[redis]==4.1.1
+    && yes | mv CONFIG_FILE AIRFLOW_HOME/
+#  - 'sudo apt-get -y install docker-ce'
+#  - 'sudo docker login --username absitdsdopswusacr001 --password FuYVABYJe/4Sl4CVp6RWszwoKlDbQysw absitdsdopswusacr001.azurecr.io && sudo docker pull absitdsdopswusacr001.azurecr.io/com.albertsons.itds/docker-airflow:1.0.0-SNAPSHOT'
 
 # final_message
 # default: cloud-init boot finished at $TIMESTAMP. Up $UPTIME seconds
